@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.fragment.user.UserFragment">
+
+    <EditText
+        android:id="@+id/editLogin_userFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="your login" />
+
+    <EditText
+        android:id="@+id/editPassword_userFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your password" />
+
+    <Button
+        android:id="@+id/btnEnter_userFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@android:drawable/checkbox_off_background"
+        android:text="enter" />
+
+</LinearLayout>

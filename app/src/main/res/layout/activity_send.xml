@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.view.SendActivity">
+
+    <EditText
+        android:id="@+id/editTitle_sendActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your title" />
+
+    <EditText
+        android:id="@+id/editContent_sendActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your content" />
+
+    <EditText
+        android:id="@+id/editUser_sendActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your user" />
+
+    <EditText
+        android:id="@+id/editGroup_sendActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your group" />
+
+    <Button
+        android:id="@+id/btnSave_sendActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:layout_gravity="end"
+        android:onClick="onClick"
+        android:text="save" />
+</LinearLayout>

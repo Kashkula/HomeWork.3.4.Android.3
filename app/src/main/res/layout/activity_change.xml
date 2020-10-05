@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/holo_orange_light"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.ChangeActivity">
+
+
+    <EditText
+        android:id="@+id/editTitle_changeActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your title" />
+
+    <EditText
+        android:id="@+id/editContent_changeActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your content" />
+
+    <EditText
+        android:id="@+id/editUser_changeActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your user" />
+
+    <EditText
+        android:id="@+id/editGroup_changeActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your group" />
+
+    <Button
+        android:id="@+id/btnChange_changeActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@android:color/holo_blue_light"
+        android:text="change" />
+
+
+</LinearLayout>
