@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/holo_blue_bright"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".ui.fragment.user.UserFragment">
+    tools:context=".ui.view.ListUserActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_userFragment"
+        android:id="@+id/recyclerView_ListUserActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_user"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
+        tools:listitem="@layout/list_user_posts" />
+
+
+
+
 
 </LinearLayout>

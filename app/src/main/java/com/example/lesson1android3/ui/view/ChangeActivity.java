@@ -12,6 +12,8 @@ import com.example.lesson1android3.R;
 import com.example.lesson1android3.data.model.PostsModel;
 import com.example.lesson1android3.data.network.PostApiService;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,15 +21,28 @@ import retrofit2.Response;
 @SuppressWarnings("ALL")
 public class ChangeActivity extends AppCompatActivity {
 
-    protected EditText editTitle, editContent, editUser, editGroup;
-    protected Button btnChange;
+    @BindView(R.id.editTitle_changeActivity)
+    EditText editTitle;
+    @BindView(R.id.editContent_changeActivity)
+    EditText editContent;
+    @BindView(R.id.editUser_changeActivity)
+    EditText editUser;
+    @BindView(R.id.editGroup_changeActivity)
+    EditText editGroup;
+
+    @BindView(R.id.btnChange_changeActivity)
+    Button btnChange;
+
     protected Integer position;
     protected PostsModel model;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change);
+        ButterKnife.bind(this);
         init();
         intentGet();
         getPost();
@@ -37,7 +52,7 @@ public class ChangeActivity extends AppCompatActivity {
             model.setUser(editUser.getText().toString().trim());
             model.setTitle(editTitle.getText().toString().trim());
 
-            PostApiService.getInstance().getPostApi().updatePost(position,model).enqueue(new Callback<PostsModel>() {
+            PostApiService.getInstance().getPostApi().updatePost(position, model).enqueue(new Callback<PostsModel>() {
                 @Override
                 public void onResponse(Call<PostsModel> call, Response<PostsModel> response) {
                     Toast.makeText(ChangeActivity.this, "Model is successly!", Toast.LENGTH_SHORT).show();
@@ -50,7 +65,6 @@ public class ChangeActivity extends AppCompatActivity {
                 }
             });
         });
-
     }
 
     private void intentGet() {
@@ -85,11 +99,6 @@ public class ChangeActivity extends AppCompatActivity {
     }
 
     private void init() {
-        editTitle = findViewById(R.id.editTitle_changeActivity);
-        editUser = findViewById(R.id.editUser_changeActivity);
-        editContent = findViewById(R.id.editContent_changeActivity);
-        editGroup = findViewById(R.id.editGroup_changeActivity);
-        btnChange = findViewById(R.id.btnChange_changeActivity);
         model = new PostsModel();
     }
 }

@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity implements OpenActivityListe
     protected BottomNavigationView bottomNavigationView;
     protected ViewPager viewPager;
     protected List<Fragment> fragmentList;
-    protected OpenActivityListener listener;
-    protected SetCurrentItemListener setCurrentItemListener;
 
     /**
      * Добрый день, Мой Верный друг в ютубе остановились на 23:00, сюжет - " после создания фрагментов
@@ -37,10 +35,10 @@ public class MainActivity extends AppCompatActivity implements OpenActivityListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         onlyCode();
         if (PreferenceUtils.getLoginLine().isEmpty() && PreferenceUtils.getPasswordLine().isEmpty())
-            viewPager.setCurrentItem(1);
-
+            startActivity(new Intent(this, LoginActivity.class));
     }
 
     private void onlyCode() {
@@ -64,13 +62,10 @@ public class MainActivity extends AppCompatActivity implements OpenActivityListe
     }
 
 
-
     private void init() {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         viewPager = findViewById(R.id.viewPager);
         fragmentList = new ArrayList<>();
-        listener = this;
-        setCurrentItemListener = this;
         PreferenceUtils.init(this);
     }
 
@@ -103,6 +98,13 @@ public class MainActivity extends AppCompatActivity implements OpenActivityListe
     public void openChangeActivity(Integer id) {
         Intent intent = new Intent(this, ChangeActivity.class);
         intent.putExtra("po", id);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openListUserActivity(String id) {
+        Intent intent = new Intent(this, ListUserActivity.class);
+        intent.putExtra("op", id);
         startActivity(intent);
     }
 

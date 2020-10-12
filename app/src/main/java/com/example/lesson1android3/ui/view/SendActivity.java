@@ -1,26 +1,34 @@
 package com.example.lesson1android3.ui.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.lesson1android3.R;
 import com.example.lesson1android3.data.model.PostsModel;
 import com.example.lesson1android3.data.network.PostApiService;
-import com.example.lesson1android3.ui.fragment.post.PostFragment;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SendActivity extends AppCompatActivity {
 
-    protected EditText editTitle, editContent, editUser, editGroup;
-    protected Button btnAdd;
+    @BindView(R.id.editTitle_sendActivity)
+    EditText editTitle;
+    @BindView(R.id.editContent_sendActivity)
+    protected EditText editContent;
+    @BindView(R.id.editGroup_sendActivity)
+    protected EditText editGroup;
+    @BindView(R.id.editUser_sendActivity)
+    protected EditText editUser;
+
     protected PostsModel postsModel;
 
     @Override
@@ -28,15 +36,11 @@ public class SendActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
         init();
+        ButterKnife.bind(this);
     }
 
     private void init() {
         postsModel = new PostsModel();
-        editTitle = findViewById(R.id.editTitle_sendActivity);
-        editContent = findViewById(R.id.editContent_sendActivity);
-        editUser = findViewById(R.id.editUser_sendActivity);
-        editGroup = findViewById(R.id.editGroup_sendActivity);
-        btnAdd = findViewById(R.id.btnSave_sendActivity);
     }
 
     public void onClick(View view) {

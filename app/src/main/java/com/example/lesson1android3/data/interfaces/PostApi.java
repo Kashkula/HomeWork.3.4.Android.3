@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface PostApi {
     @GET("posts")
@@ -26,5 +27,11 @@ public interface PostApi {
     Call<PostsModel> deletePost(@Path("postId") Integer postId);
 
     @PUT("posts/{postId}")
-    Call<PostsModel> updatePost(@Path("postId") Integer postId,@Body PostsModel model);
+    Call<PostsModel> updatePost(@Path("postId") Integer postId, @Body PostsModel model);
+
+    @GET("posts?users")
+    Call<List<PostsModel>> getUsers();
+
+    @GET("posts?")
+    Call<List<PostsModel>> getUserPosts(@Query("user") String user);
 }

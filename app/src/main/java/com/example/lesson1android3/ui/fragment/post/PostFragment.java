@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lesson1android3.R;
 import com.example.lesson1android3.data.model.PostsModel;
+import com.example.lesson1android3.data.network.AuthApiService;
 import com.example.lesson1android3.data.network.PostApiService;
 import com.example.lesson1android3.data.interfaces.OnItemClickListener;
 import com.example.lesson1android3.ui.adapter.PostAdapter;
@@ -23,6 +24,9 @@ import com.example.lesson1android3.data.interfaces.OpenActivityListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,7 +35,9 @@ import retrofit2.Response;
 public class PostFragment extends Fragment implements OnItemClickListener {
     protected ArrayList<PostsModel> listModel;
     protected PostsModel model;
-    protected RecyclerView recyclerView;
+    Unbinder unbinder;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
     protected PostAdapter adapter;
     protected OpenActivityListener listener;
     protected OnItemClickListener onItemClickListener;
@@ -40,15 +46,16 @@ public class PostFragment extends Fragment implements OnItemClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_post, container, false);
+        View view=inflater.inflate(R.layout.fragment_post, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        init(view);
+        init();
         setAdapter();
-        getPost();
         sendPost(view);
     }
 
@@ -76,7 +83,7 @@ public class PostFragment extends Fragment implements OnItemClickListener {
 
             @Override
             public void onFailure(Call<List<PostsModel>> call, Throwable t) {
-                Toast.makeText(getContext(), "Миссия провалена!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "getPost() - onFailure!!!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -85,12 +92,11 @@ public class PostFragment extends Fragment implements OnItemClickListener {
         recyclerView.setAdapter(adapter);
     }
 
-    private void init(View view) {
-        recyclerView = view.findViewById(R.id.recyclerView);
+    private void init() {
         listModel = new ArrayList<>();
-        adapter = new PostAdapter(listModel, this);
         model = new PostsModel();
         listener = (OpenActivityListener) requireActivity();
+        adapter = new PostAdapter(listModel, this);
         onItemClickListener = this;
     }
 
@@ -112,10 +118,14 @@ public class PostFragment extends Fragment implements OnItemClickListener {
     }
 
     @Override
-    public void onItemView(int position) {
+    public void onItemViewPostFragment(int position) {
         Integer id = Integer.valueOf(listModel.get(position).getId());
         listener.openChangeActivity(id);
         Toast.makeText(getContext(), "onItemView включён!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemViewUserFragment(int position) {
     }
 
     private void deletePost(int position) {

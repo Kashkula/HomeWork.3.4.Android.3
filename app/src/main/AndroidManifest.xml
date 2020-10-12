@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.view.ChangeActivity"></activity>
+        <activity android:name=".ui.view.ListUserActivity"></activity>
+        <activity android:name=".ui.view.LoginActivity" />
+        <activity android:name=".ui.view.ChangeActivity" />
         <activity android:name=".ui.view.SendActivity" />
         <activity android:name=".ui.view.PostActivity" />
         <activity android:name=".ui.view.MainActivity">
